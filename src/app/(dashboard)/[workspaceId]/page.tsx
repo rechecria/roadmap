@@ -7,6 +7,7 @@ import TeamPage from '@/components/team/TeamPage'
 import ActivityPage from '@/components/activity/ActivityPage'
 import IntegrationsPage from '@/components/integrations/IntegrationsPage'
 import WorkspaceToolsPage from '@/components/tools/WorkspaceToolsPage'
+import PagesPage from '@/components/pages/PagesPage'
 import { useAppStore } from '@/stores/app-store'
 import type { ActiveView } from '@/stores/app-store'
 
@@ -55,18 +56,7 @@ export default function WorkspaceHome() {
         {activeView === 'activity' && <ActivityPage />}
         {activeView === 'integrations' && <IntegrationsPage />}
         {activeView === 'tools' && <WorkspaceToolsPage />}
-        {activeView === 'pages' && (
-          <div className="flex-1 flex items-center justify-center p-8 bg-[#0a0a0a] h-full">
-            <div className="text-center">
-              <div className="text-4xl mb-4">📄</div>
-              <h3 className="text-lg font-semibold text-white/70 mb-2">Páginas do Projeto</h3>
-              <p className="text-sm text-white/30 max-w-md">
-                Documentação, notas e wikis do projeto {currentProject?.name || ''}.
-                Em breve com editor Notion-style integrado.
-              </p>
-            </div>
-          </div>
-        )}
+        {activeView === 'pages' && <PagesPage />}
       </div>
     </div>
   )
