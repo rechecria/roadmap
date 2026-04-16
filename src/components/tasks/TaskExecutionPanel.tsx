@@ -59,17 +59,17 @@ export default function TaskExecutionPanel({ task, agents }: TaskExecutionPanelP
   const [sending, setSending] = useState(false)
   const [loading, setLoading] = useState(true)
   const [bridgeHealth, setBridgeHealth] = useState<BridgeHealth | null>(null)
-  const [selectedProvider, setSelectedProvider] = useState<ProviderKey>('claude-cloud')
+  const [selectedProvider, setSelectedProvider] = useState<ProviderKey>('claude-code')
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Detect local bridge + available providers
   useEffect(() => {
     checkBridge().then(h => {
       setBridgeHealth(h)
-      // Auto-select best provider on first detection
+      // Auto-select best provider: prefer claude-code (local Max plan)
       if (h?.providers) {
-        if (h.providers['codex']) setSelectedProvider('codex')
-        else if (h.providers['claude-code']) setSelectedProvider('claude-code')
+        if (h.providers['claude-code']) setSelectedProvider('claude-code')
+        else if (h.providers['codex']) setSelectedProvider('codex')
       }
     })
     const interval = setInterval(() => {
