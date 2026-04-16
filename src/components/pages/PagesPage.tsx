@@ -428,7 +428,7 @@ export default function PagesPage() {
       const newPage: Partial<Page> = {
         workspace_id: '00000000-0000-0000-0000-000000000001',
         project_id: currentProject.id,
-        parent_id: parentId,
+        parent_id: parentId || undefined,
         title: 'Nova Página',
         icon: '📝',
         content: [],
